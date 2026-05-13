@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="001-create-account-table" author="jen">
+        <sqlFile path="db/scripts/001_ddl_create_account_table.sql"/>
+    </changeSet>
+
+    <changeSet id="002-create-post-table" author="jen">
+        <sqlFile path="db/scripts/002_ddl_create_post_table.sql"/>
+    </changeSet>
+
+    <changeSet id="003-create-post-image-table" author="jen">
+        <sqlFile path="db/scripts/003_ddl_create_post_image_table.sql"/>
+    </changeSet>
+
+    <changeSet id="004-create-subscription-table" author="jen">
+        <sqlFile path="db/scripts/004_ddl_create_subscription_table.sql"/>
+    </changeSet>
+
+    <changeSet id="005-create-friend-request-table" author="jen">
+        <sqlFile path="db/scripts/005_ddl_create_friend_request_table.sql"/>
+    </changeSet>
+
+    <changeSet id="006-create-friendship-table" author="jen">
+        <sqlFile path="db/scripts/006_ddl_create_friendship_table.sql"/>
+    </changeSet>
+
+    <changeSet id="007-create-message-table" author="jen">
+        <sqlFile path="db/scripts/007_ddl_create_message_table.sql"/>
+    </changeSet>
+
+</databaseChangeLog>

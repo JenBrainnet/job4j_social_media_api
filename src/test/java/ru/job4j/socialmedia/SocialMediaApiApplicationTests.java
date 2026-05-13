@@ -1,9 +1,11 @@
-package ru.job4j.social_media_api;
+package ru.job4j.socialmedia;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
+@ActiveProfiles("test")
 class SocialMediaApiApplicationTests {
 
 	@Test
