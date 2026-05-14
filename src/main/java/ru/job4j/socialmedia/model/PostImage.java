@@ -19,4 +19,8 @@ public class PostImage {
     @Column(nullable = false)
     private String path;
 
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post;
+
 }
