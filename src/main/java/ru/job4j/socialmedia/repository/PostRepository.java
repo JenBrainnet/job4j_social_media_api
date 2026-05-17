@@ -22,11 +22,12 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     @Modifying(clearAutomatically = true)
     @Query("""
             UPDATE Post post SET post.title = :title, post.text = :text
-            WHERE post.id = :postId
+            WHERE post.id = :postId AND post.account.id = :accountId
             """
     )
-    int updateTitleAndText(
+    int updateTitleAndTextByIdAndAccountId(
             @Param("postId") Integer postId,
+            @Param("accountId") Integer accountId,
             @Param("title") String title,
             @Param("text") String text
     );
@@ -45,18 +46,24 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     @Modifying(clearAutomatically = true)
     @Query("""
         DELETE FROM PostImage image
-        WHERE image.post.id = :postId
+        WHERE image.post.id = :postId AND image.post.account.id = :accountId
         """
     )
-    int deleteImagesByPostId(@Param("postId") Integer postId);
+    int deleteImagesByPostIdAndAccountId(
+            @Param("postId") Integer postId,
+            @Param("accountId") Integer accountId
+    );
 
     @Modifying(clearAutomatically = true)
     @Query("""
         DELETE FROM Post post
-        WHERE post.id = :postId
+        WHERE post.id = :postId AND post.account.id = :accountId
         """
     )
-    int deletePostById(@Param("postId") Integer postId);
+    int deletePostByIdAndAccountId(
+            @Param("postId") Integer postId,
+            @Param("accountId") Integer accountId
+    );
 
     @Query("""
             SELECT post FROM Post post

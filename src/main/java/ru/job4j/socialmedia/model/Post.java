@@ -2,8 +2,10 @@ package ru.job4j.socialmedia.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,14 +26,14 @@ public class Post {
     private String text;
 
     @Column(nullable = false)
-    private LocalDateTime created;
+    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
+    private LocalDateTime created = LocalDateTime.now(ZoneOffset.UTC);
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "account_id")
     private Account account;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "post_id")
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PostImage> images = new ArrayList<>();
 
 }

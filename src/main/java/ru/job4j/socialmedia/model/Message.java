@@ -2,8 +2,10 @@ package ru.job4j.socialmedia.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 @Entity
 @Table(name = "message")
@@ -27,6 +29,7 @@ public class Message {
     private String text;
 
     @Column(nullable = false)
-    private LocalDateTime created;
+    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
+    private LocalDateTime created = LocalDateTime.now(ZoneOffset.UTC);
 
 }
