@@ -20,6 +20,16 @@ public class PostService {
     private final AccountRepository accountRepository;
     private final PostRepository postRepository;
 
+    @Transactional(readOnly = true)
+    public Optional<Post> findById(Integer id) {
+        return postRepository.findById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Post> findAll() {
+        return postRepository.findAll();
+    }
+
     @Transactional
     public Optional<Post> create(Integer accountId, String title, String text, List<PostImage> images) {
         var accountOptional = accountRepository.findById(accountId);
